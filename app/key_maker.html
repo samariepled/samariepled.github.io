@@ -1,0 +1,711 @@
+<html>
+<head>
+<title>
+Key Maker
+</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="icon" type="image/png" href="http://simpleicon.com/wp-content/uploads/Code-Optimization-3-256x256.png" />
+</head>
+<style type="text/css">
+#myProgress {
+width: 100%;
+height: 30px;
+position: relative;
+background-color: #ddd;
+border: 2px groove red;
+}
+#myBar {
+background-color: #4CAF50;
+width: 10px;
+height: 30px;
+position: absolute;
+}
+/**
+The loader
+**/
+#loader {
+position: absolute;
+left: 50%;
+top: 50%;
+z-index: 1;
+width: 150px;
+height: 150px;
+margin: -75px 0 0 -75px;
+border: 16px solid #f3f3f3;
+border-radius: 50%;
+border-top: 16px solid #e33e2b;
+border-right: 16px solid #3a7cec;
+border-bottom: 16px solid #2ba14b;
+border-left: 16px solid #f1b500;
+width: 120px;
+height: 120px;
+-webkit-animation: spin 2s linear infinite;
+animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+0% { -webkit-transform: rotate(0deg); }
+100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 }
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom {
+  from{ bottom:-100px; opacity:0 }
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+/**
+End of loader
+**/
+/* The actual popup */
+.popuptext {
+visibility: hidden;
+width: 160px;
+background-color: #191919;
+color: #191919;
+text-align: center;
+border-radius: 6px;
+padding: 8px 0;
+position: absolute;
+z-index: 1;
+bottom: 125%;
+left: 50%;
+margin-left: -80px;
+}
+/* Popup arrow */
+.popuptext::after {
+content: "";
+position: absolute;
+top: 100%;
+left: 50%;
+margin-left: -5px;
+border-width: 5px;
+border-style: solid;
+border-color: #555 transparent transparent transparent;
+}
+/* Toggle this class - hide and show the popup */
+.popup .show {
+visibility: visible;
+-webkit-animation: fadeIn 1s;
+animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+.cmp {
+border : 3px solid grey;
+border-style: groove groove groove groove;
+border-radius: 25px;
+padding: 5px 5px;
+}
+body {
+background-color: #191919;
+color: white;
+font-family: "Roboto", sans-serif;
+}
+textarea {
+border: none;
+border-radius: 10px;
+cursor: pointer;
+color: white;
+background-color: #4CAF50;
+text-decoration: none;
+padding: 10px 10px;
+font-size: 16px;
+}
+button {
+background-color: #4CAF50;
+border: 2px solid #009601;
+color: white;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 14px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 25px;
+transition-duration: 0.4s;
+}
+button:hover {
+background-color: white;
+border: 2px solid #4CAF50;
+color: #4CAF50;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 14px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 25px;
+transition-duration: 0.4s;
+}
+.button {
+background-color: #4CAF50;
+border: 2px solid #009601;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 14px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 25px;
+transition-duration: 0.4s;
+}
+.button:hover {
+background-color: white;
+border: 2px solid #4CAF50;
+color: #4CAF50;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 14px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 25px;
+transition-duration: 0.4s;
+}
+input[type=text] {
+background-color: #4CAF50;
+border: none;
+color: white;
+padding: 15px 32px;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 12px;
+width: 20%;
+}
+input[type=number] {
+background-color: #4CAF50;
+border: none;
+color: white;
+padding: 15px 32px;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 12px;
+width: 20%;
+}
+.paper-toggle {
+clear: both;
+margin: 20px 0;
+}
+.paper-toggle input:empty {
+display:none;
+}
+.paper-toggle {
+position: relative;
+float: left;
+line-height: 1.6em;
+width: 150px;
+cursor: pointer;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.paper-toggle input:empty ~ label:before, 
+.paper-toggle input:empty ~ label:after {
+position: absolute;
+display: block;
+content: ' ';
+-webkit-transition: all 200ms ease-in;
+transition: all 200ms ease-in;
+}
+.paper-toggle input:empty ~ label:before {
+top: 3px;
+left: 4px;
+width: 34px;
+height: 14px;
+border-radius: 6px;
+background-color: #5a5a5a;
+opacity: 0.60;
+}
+input.switch:empty ~ label:after {
+top: 0px;
+left: 0px;
+width: 1.4em;
+height: 8px;
+bottom: 0.1em;
+margin-left: 0.1em;
+background-color: #4caf50; //#ffffff
+border-radius: 50%;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+border: 0;
+border-color: #5a5a5a;
+-webkit-box-shadow: -1px 2px 6px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 2px 6px -1px rgba(0,0,0,0.75);
+box-shadow: -1px 2px 6px -1px rgba(0,0,0,0.75);
+}
+.paper-toggle input:checked ~ label:before {
+background-color: #00aeef;
+}
+.paper-toggle input:checked ~ label:after {
+left: 16px;
+background-color: #00aeef;
+border-color: #00aeef;
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+/**
+$(document).ready(function() {
+setTimeout(function(){
+$('body').addClass('loaded');
+$('h1').css('color','#222222');
+}, 1500);
+});
+**/
+function ascii(a) { // give the ascii code of the char entered
+return a.charCodeAt();
+}
+var possible;
+var maxChars;
+var pre;
+var suf;
+function makeid() { // generate the key, the hash, and the total hash
+var text = "";
+possible = document.getElementById("possible").value;
+maxChars = document.getElementById("maxChars").value;
+var maxCharsT = maxChars.split("");
+var possibleT = possible.split("");
+pre = document.getElementById("pre").value;
+suf = document.getElementById("suf").value;
+for( var i=0; i < maxChars; i++ )
+text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+//return text;
+text = text.split("").reverse().join("");
+text = pre + text + suf;
+var hash = window.btoa(text);
+var hashtt = hash + text;
+hashtt = hashtt.split("").reverse();
+for(i=0;i<hashtt.length;i++) {
+hashtt[i] = ascii(hashtt[i]);
+}
+hashtt = window.btoa(hashtt);
+var key = text;
+document.getElementById("key-receiver").value = key;
+setCookie("key-receiver", key, 365);
+document.getElementById("hash-receiver").value = hash;
+setCookie("hash-receiver", hash, 365);
+document.getElementById("hashtt-receiver").value = hashtt;
+setCookie("hashtt-receiver", hashtt, 365);
+var d = new Date();
+var date = d.getDate();
+var month = d.getMonth() + 1;
+if(month<10) {
+month = "0" + month;
+}
+var year = d.getFullYear();
+var hours = d.getHours();
+if(hours<10) {
+hours = "0" + hours;
+}
+var minutes = d.getMinutes();
+if(minutes<10) {
+minutes = "0" + minutes;
+}
+var seconds = d.getSeconds();
+if(seconds<10) {
+seconds = "0" + seconds;
+}
+var milliseconds = d.getMilliseconds() + "ms";
+var day = date + "/" + month + "/" + year;
+var time = hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+var x = "[" + day + " - " + time + "] ";
+document.getElementById("log").value = x + "Key generated with " + maxChars + " chars long, '" + possible + "' for possibilities, '" + pre + "' for prefixe and '" + suf + "' for sufixe" + "\n" + document.getElementById("log").value;
+setCookie("log", document.getElementById("log").value, 365);
+}
+function clearZone() {
+text = "";
+document.getElementById("key-receiver").value = text;
+document.getElementById("hash-receiver").value = text;
+document.getElementById("hashtt-receiver").value = text;
+var d = new Date();
+var date = d.getDate();
+var month = d.getMonth() + 1;
+if(month<10) {
+month = "0" + month;
+}
+var year = d.getFullYear();
+var hours = d.getHours();
+if(hours<10) {
+hours = "0" + hours;
+}
+var minutes = d.getMinutes();
+if(minutes<10) {
+minutes = "0" + minutes;
+}
+var seconds = d.getSeconds();
+if(seconds<10) {
+seconds = "0" + seconds;
+}
+var milliseconds = d.getMilliseconds() + "ms";
+var day = date + "/" + month + "/" + year;
+var time = hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+var x = "[" + day + " - " + time + "] ";
+document.getElementById("log").value = x + "Zone cleared" + "\n" +document.getElementById("log").value;
+setCookie("log", document.getElementById("log").value, 365);
+}
+function unBlock() {
+document.getElementById("unBlock").innerHTML = "<iframe src='http://192.168.1.1/hndBlock.cgi?url=javascript:window.close()' width='500' height='300'></iframe>"
+}
+function closeWindow() {
+var close = "";
+document.getElementById("unBlock").innerHTML = close;
+close.delete();
+}
+function resetLaunchCode() {
+document.getElementById("launchCode").innerHTML = "<button onclick=\"launchCode();\">Get Launch Code</button>";
+}
+function launchCode() {
+document.getElementById("launchCode").innerHTML = "<button onclick=\"resetLaunchCode();\">Reset Launch Code</button><br>CPE1704TKS";
+}
+function copyToClipboard(int) {
+var txt = document.querySelector(int);
+txt.select();
+try {  
+// Now that we've selected the anchor text, execute the copy command  
+var successful = document.execCommand('copy');  
+var msg = successful ? 'successful' : 'unsuccessful';  
+console.log('Copy command was ' + msg);
+var d = new Date();
+var date = d.getDate();
+var month = d.getMonth() + 1;
+if(month<10) {
+month = "0" + month;
+}
+var year = d.getFullYear();
+var hours = d.getHours();
+if(hours<10) {
+hours = "0" + hours;
+}
+var minutes = d.getMinutes();
+if(minutes<10) {
+minutes = "0" + minutes;
+}
+var seconds = d.getSeconds();
+if(seconds<10) {
+seconds = "0" + seconds;
+}
+var milliseconds = d.getMilliseconds() + "ms";
+var day = date + "/" + month + "/" + year;
+var time = hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+var x = "[" + day + " - " + time + "] ";
+if(msg=="successful") {
+document.getElementById("log").value = x + "Data copied to clipboard successfully" + "\n" + document.getElementById("log").value;
+} else {
+document.getElementById("log").value = x + "Failed to copy data to clipboard" + "\n" + document.getElementById("log").value;
+}
+var popup = document.getElementById('myPopup');
+popup.classList.toggle('show');
+} catch(err) {  
+console.log('Oops, unable to copy');  
+}
+// Remove the selections - NOTE: Should use
+// removeRange(range) when it is supported  
+window.getSelection().removeAllRanges();  
+}
+function showLog() {
+$('#consoleLog').hide();
+$('#consoleLog').fadeOut('fast');
+$('#showLog').change(function(){
+if (this.checked) {
+var d = new Date();
+var date = d.getDate();
+var month = d.getMonth() + 1;
+if(month<10) {
+month = "0" + month;
+}
+var year = d.getFullYear();
+var hours = d.getHours();
+if(hours<10) {
+hours = "0" + hours;
+}
+var minutes = d.getMinutes();
+if(minutes<10) {
+minutes = "0" + minutes;
+}
+var seconds = d.getSeconds();
+if(seconds<10) {
+seconds = "0" + seconds;
+}
+var milliseconds = d.getMilliseconds() + "ms";
+var day = date + "/" + month + "/" + year;
+var time = hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+var x = "[" + day + " - " + time + "] ";
+document.getElementById("log").value = x + "Console opened" + "\n" + document.getElementById("log").value;
+setCookie("log", document.getElementById("log").value, 365);
+$('#consoleLog').fadeIn('slow');
+} else {
+var d = new Date();
+var date = d.getDate();
+var month = d.getMonth() + 1;
+if(month<10) {
+month = "0" + month;
+}
+var year = d.getFullYear();
+var hours = d.getHours();
+if(hours<10) {
+hours = "0" + hours;
+}
+var minutes = d.getMinutes();
+if(minutes<10) {
+minutes = "0" + minutes;
+}
+var seconds = d.getSeconds();
+if(seconds<10) {
+seconds = "0" + seconds;
+}
+var milliseconds = d.getMilliseconds() + "ms";
+var day = date + "/" + month + "/" + year;
+var time = hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+var x = "[" + day + " - " + time + "] ";
+document.getElementById("log").value = x + "Console closed" + "\n" + document.getElementById("log").value;
+setCookie("log", document.getElementById("log").value, 365);
+$('#consoleLog').fadeOut('slow');
+}                   
+});
+}
+function initiate() {
+getData();
+var progress;
+progress = 0;
+myVar = setInterval(showPage, 50);
+function showPage() {
+if(progress==100) {
+clearInterval(myVar);
+document.getElementById("loader").style.display = "none";
+document.getElementById("loaderMessage").style.display = "none";
+document.getElementById("content").style.display = "block";
+var d = new Date();
+var date = d.getDate();
+var month = d.getMonth() + 1;
+if(month<10) {
+month = "0" + month;
+}
+var year = d.getFullYear();
+var hours = d.getHours();
+if(hours<10) {
+hours = "0" + hours;
+}
+var minutes = d.getMinutes();
+if(minutes<10) {
+minutes = "0" + minutes;
+}
+var seconds = d.getSeconds();
+if(seconds<10) {
+seconds = "0" + seconds;
+}
+var milliseconds = d.getMilliseconds() + "ms";
+var day = date + "/" + month + "/" + year;
+var time = hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+var x = "[" + day + " - " + time + "] ";
+document.getElementById("log").value = x + "Page fully loaded" + "\n" + document.getElementById("log").value;
+} else {
+progress++;
+document.getElementById("loadProgress").value = progress;
+elem.style.width = width + "%";
+}
+}
+$('#consoleLog').fadeOut('fast');
+}
+function getData() {
+//cookies
+if(getCookie("log")=="") {
+setCookie("log", document.getElementById("log").value, 365);
+} else {
+document.getElementById("log").value = getCookie("log");
+}
+if(getCookie("key-receiver")=="") {
+setCookie("key-receiver", document.getElementById("key-receiver").value, 365);
+} else {
+document.getElementById("key-receiver").value = getCookie("key-receiver");
+}
+if(getCookie("hash-receiver")=="") {
+setCookie("hash-receiver", document.getElementById("hash-receiver").value, 365);
+} else {
+document.getElementById("hash-receiver").value = getCookie("hash-receiver");
+}
+if(getCookie("hashtt-receiver")=="") {
+setCookie("hashtt-receiver", document.getElementById("hashtt-receiver").value, 365);
+} else {
+document.getElementById("hashtt-receiver").value = getCookie("hashtt-receiver");
+}
+}
+function getTheTime() {
+var d = new Date();
+var date = d.getDate();
+var month = d.getMonth() + 1;
+if(month<10) {
+month = "0" + month;
+}
+var year = d.getFullYear();
+var hours = d.getHours();
+if(hours<10) {
+hours = "0" + hours;
+}
+var minutes = d.getMinutes();
+if(minutes<10) {
+minutes = "0" + minutes;
+}
+var seconds = d.getSeconds();
+if(seconds<10) {
+seconds = "0" + seconds;
+}
+var milliseconds = d.getMilliseconds() + "ms";
+var day = date + "/" + month + "/" + year;
+var time = hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+var x = "[" + day + " - " + time + "] ";
+}
+function setCookie(cname,cvalue,exdays) {
+var d = new Date();
+d.setTime(d.getTime() + (exdays*24*60*60*1000));
+var expires = "expires=" + d.toGMTString();
+document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+var name = cname + "=";
+var ca = document.cookie.split(';');
+for(var i = 0; i < ca.length; i++) {
+var c = ca[i];
+while (c.charAt(0) == ' ') {
+c = c.substring(1);
+}
+if (c.indexOf(name) == 0) {
+return c.substring(name.length, c.length);
+}
+}
+return "";
+}
+</script>
+<body onload="initiate()" class="demo">
+<!--
+<div id="loader-wrapper">
+<div id="loader"></div>
+<div class="loader-section section-left"></div>
+<div class="loader-section section-right"></div>
+</div>
+-->
+<div id="loaderMessage" style="margin: auto;">
+<center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>
+Loading...
+<input type=number id="loadProgress" readonly style="background-color: #191919; border: none; color: white; padding: 0px 0px; display: inline-block; font-size: 24px; margin: 4px 2px; cursor: default; border-radius: 0%; width: 60px;" value="0">
+%
+</h1>
+<!--
+<div id="myProgress">
+<div id="myBar"></div>
+</div>
+-->
+</center>
+</div>
+<div id="loader">
+<!--
+<img src="https://www.seeklogo.net/wp-content/uploads/2015/09/new-google-favicon-logo.png" width=50 height=50 style="position: absolute; left: 50%; top: 50%; float: inherit; display: block; margin-left: auto; margin-right : auto; margin-top: auto; margin-bottom: auto;">
+-->
+</div>
+<div class="cmp animatebottom" style="border: 8px groove grey; display: none;" id="content">
+<div style="text-align: center;">
+<img src="https://www.seeklogo.net/wp-content/uploads/2015/09/new-google-favicon-logo.png" width=50 height=50 style="float: left; font-size: 20px;">
+Made by 
+<img src="http://patrickcoombe.com/wp-content/uploads/2015/09/new-google-logo-2015.png" width=120 height=50 style="float: right;">
+</div><br><br><br>
+<center>
+<div class="cmp">
+<button onclick="unBlock();">Unblock wifi</button>
+<button onclick="closeWindow();">Close window</button>
+<div id="unBlock"></div>
+</div>
+<br>
+<!--
+<button onclick="start();">Create</button>
+<div id="key">
+</div>
+-->
+<div id="launchCode" class="cmp">
+<button onclick="launchCode();">Get Launch Code</button>
+</div>
+<br>
+</center>
+<div id="generateKey" class="cmp">
+<!-- <button onclick="documemt.getElementById('maxChars').value += 10;">Add 10</button> -->
+<input type=number id="maxChars" autocomplete=on placeholder="Numbers of chars that will contain the key" value="20" maxlength="10">
+<input type=text id="possible" autocomplete=on placeholder="Chars that will be use to generate the key" value="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789">
+<input type=text id="pre" autocomplete=on placeholder="Prefixe">
+<input type=text id="suf" autocomplete=on placeholder="Sufixe">
+<br>
+<a onclick="makeid();" class="button" href="#bottom" id="bottom">Generate key using preferences</a>
+<button onclick="clearZone();">Clear zone</button>
+<br>Key :<br>
+<center>
+<span class="popuptext" id="myPopup1">Key copied to clipboard</span>
+<button class="js-keycopy" onclick="copyToClipboard('.js-key')">Copy<br>key</button><textarea id="key-receiver" rows=10 cols=80 style="resize: none;" readonly placeholder="Key" class="js-key"></textarea></center>
+<br>Key hash :<br>
+<center>
+<span class="popuptext" id="myPopup2">Key hash copied to clipboard</span>
+<button class="js-hashcopy" onclick="copyToClipboard('.js-hash')">Copy<br>key<br>hash</button><textarea id="hash-receiver" rows=10 cols=80 style="resize: none;" readonly placeholder="Key hash" class="js-hash"></textarea></center>
+<br>Key hash total :<br>
+<center>
+<span class="popuptext" id="myPopup3">Key hash total copied to clipboard</span>
+<button class="js-hashttcopy" onclick="copyToClipboard('.js-hashtt')">Copy<br>key<br>hash<br>total</button><textarea id="hashtt-receiver" rows=10 cols=80 style="resize: none;" readonly placeholder="Key hash total" class="js-hashtt"></textarea></center>
+Show console
+<center>
+<div class="paper-toggle">
+<input type=checkbox id="showLog" name="showLog" class="switch" onclick="showLog()">
+<label for="showLog"></label>
+</div>
+</center>
+<br><br><br>
+<div class="cmp" id="consoleLog">
+<center>
+<textarea id="log" rows=15 cols=80 style="resize: none;" readonly placeholder="Console"></textarea>
+</center>
+</div>
+</div>
+</div>
+</body>
+</html>
