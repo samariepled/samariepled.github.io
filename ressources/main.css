@@ -2,6 +2,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: grey;
     color: white;
+    margin: 0;
 }
 a:link {
     color: white;
@@ -18,4 +19,32 @@ a:hover {
 a:active {
     color: #e1e1e1;
     text-decoration: none;
+}
+/**
+ul.ull {
+    list-style-type: circle;
+}
+**/
+ul.ull {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+li.ull {
+    float: left;
+}
+li.ull a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li.ull a:hover {
+    background-color: #111;
 }
