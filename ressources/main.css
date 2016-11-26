@@ -3,3 +3,19 @@ body {
     background-color: grey;
     color: white;
 }
+a:link {
+    color: white;
+    text-decoration: none;
+}
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+a:hover {
+    color: #e1e1e1;
+    text-decoration: none;
+}
+a:active {
+    color: #e1e1e1;
+    text-decoration: none;
+}
