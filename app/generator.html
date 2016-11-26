@@ -1,0 +1,116 @@
+<!--
+<html>
+	<body>
+		<div id="rz">
+			<button onclick="myFunction()">Try it</button>
+		</div>
+		<script>
+			var myVar;
+			function myFunction() {
+				alert("Step1");
+				myVar = setInterval(cyclel, 3000);
+			}
+			function cyclel() {
+				var r = [];
+				var p = [0,1,2,3,4,5,6,7,8,9]
+				for(i=0;i<10;i++) {
+					r[i] = p[Math.floor(Math.random() * (9 - 0 +1)) + 0;]
+				}
+				document.getElementById("rz").innerHTML = r;
+			}
+		</script>
+	</body>
+</html>
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+button {
+    /*background-color: #4CAF50;*/
+    background-color: #555555;
+    border: none;
+    /*color: white;*/
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+input {
+			background-color: #e7e7e7;
+			color: black;
+    /*background-color: #4CAF50;*/
+    border: none;
+    /*color: white;*/
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<p id="id"></p>
+<p id="idd"></p>
+
+<button onclick="myFunction()" class="button">Try it</button>
+<input type=text id="poss" value="1234567890">
+<input type=number id="num" value="1000">
+<button onclick="clearInterval(myVar)" class="button">Reset</button>
+<button onclick="location.reload()" class="button">Reload</button>
+
+<script>
+var myVar;
+var r;
+//var l1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+//var l2 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+//var l3 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+//var l4 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+//var l5 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var l1 = [];
+var l2 = [];
+var l3 = [];
+var l4 = [];
+var l5 = [];
+var t = 0;
+function myFunction() {
+		clearInterval(myVar);
+		r = document.getElementById("poss").value.split("");
+    myVar = setInterval(alertFunc, document.getElementById("num").value);
+}
+
+function alertFunc() {
+  for(i=0;i<25;i++) {
+  		l1[i] = r[Math.floor(Math.random()*r.length)];
+  		l2[i] = r[Math.floor(Math.random()*r.length)];
+  		l3[i] = r[Math.floor(Math.random()*r.length)];
+  		l4[i] = r[Math.floor(Math.random()*r.length)];
+  		l5[i] = r[Math.floor(Math.random()*r.length)];
+  }
+  l1 = l1.join("");
+  l2 = l2.join("");
+  l3 = l3.join("");
+  l4 = l4.join("");
+  l5 = l5.join("");
+  document.getElementById("id").innerHTML = l1 + "<br>" + l2 + "<br>" + l3 + "<br>" + l4 + "<br>" + l5;
+  t = eval(eval(l1.value+l2.value+l3.value+l4.value+l5.value)/5);
+  //document.getElementById("idd").innerHTML = t;
+  l1 = l1.split("");
+  l2 = l2.split("");
+  l3 = l3.split("");
+  l4 = l4.split("");
+  l5 = l5.split("");
+  //document.getElementById("id").innerHTML = eval(r[r[Math.floor(Math.random()*r.length)]]*r[r[Math.floor(Math.random()*r.length)]]*r[r[Math.floor(Math.random()*r.length)]]*r[r[Math.floor(Math.random()*r.length)]]*r[r[Math.floor(Math.random()*r.length)]]*r[r[Math.floor(Math.random()*r.length)]]*r[r[Math.floor(Math.random()*r.length)]]*r[r[Math.floor(Math.random()*r.length)]]*r[r[Math.floor(Math.random()*r.length)]]*r[r[Math.floor(Math.random()*r.length)]]);
+}
+</script>
+
+</body>
+</html>
