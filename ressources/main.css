@@ -37,6 +37,9 @@ ul.ull {
 }
 li.ull {
     float: left;
+    //margin-top: 8;
+    //margin-bottom: 8;
+    display: block;
 }
 li.ull a {
     display: block;
@@ -47,4 +50,35 @@ li.ull a {
 }
 li.ull a:hover {
     background-color: #111;
+}
+.doc-content {
+    margin: 8;
+}
+
+
+
+li#dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #111}
+
+#dropdown:hover .dropdown-content {
+    display: block;
 }

